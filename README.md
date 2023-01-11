@@ -1,6 +1,6 @@
 # Bank
 
-Another Vue example, with two components, a form and a filter field to show filtered items matching term.
+Another Vue example, with a box component, a form and a filter field to show filtered items matching term.
 
 ## Project Setup
 
