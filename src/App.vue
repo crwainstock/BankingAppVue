@@ -21,6 +21,27 @@
         v-model="searchTerm"
       />
     </div>
+
+    <!-- Trying to create checkboxes to filter the items -- all income or all expenses or both if nothing or both are selected -->
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          v-model="incomeCheck"
+        />Income
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          v-model="expenseCheck"
+        />Expenses
+      </label>
+    </div>
+
     <div>
       <ul class="mt-4 list-group">
         <li
@@ -55,6 +76,8 @@ export default {
       amount: 0,
       id: 4,
       searchTerm: "",
+      incomeCheck: false,
+      expenseCheck: false,
       items: [
         { id: 1, name: "Food", amount: -30 },
         { id: 2, name: "Groceries", amount: -42 },
@@ -76,6 +99,7 @@ export default {
     },
   },
   computed: {
+    // For the boxes
     income() {
       return this.items
         .filter((i) => i.amount > 0)
@@ -89,10 +113,17 @@ export default {
     balance() {
       return this.income + this.expenses;
     },
+    // For search filter
     filteredItems() {
       return this.items.filter((item) =>
         item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
       );
+    },
+    // This isn't quite working yet...revisit.
+    expenseItems() {
+      if ((expenseCheck = true)) {
+        return this.items.filter((item) => item.amount < 0);
+      }
     },
   },
 };
