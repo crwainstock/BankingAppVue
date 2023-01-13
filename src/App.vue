@@ -29,7 +29,7 @@
           type="checkbox"
           class="form-check-input"
           v-model="incomeCheck"
-        />Income
+        />Income only
       </label>
     </div>
     <div class="form-check-inline">
@@ -38,7 +38,7 @@
           type="checkbox"
           class="form-check-input"
           v-model="expenseCheck"
-        />Expenses
+        />Expenses only
       </label>
     </div>
 
@@ -119,12 +119,29 @@ export default {
         item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
       );
     },
-    // This isn't quite working yet...revisit.
-    expenseItems() {
-      if ((expenseCheck = true)) {
-        return this.items.filter((item) => item.amount < 0);
-      }
-    },
+
+    // For checkboxes -- This isn't quite working yet...revisit.
+    /*Ok, so realistically, if I was making something with usability in mind, these checkboxes might not be the way to go.
+    But, I'm curious how to make them work with the filter. Radio buttons might be a better option for this.
+
+    OPTION 1:
+    If the income-only button is selected, only income items will show in the filtered list.
+    The expense-only button is now disabled.
+    If the expense-only button is selected, only expenese items will show in the filtered list.
+    The income-only button is now disabled.
+    Both buttons cannot be selected at the same time.
+
+    OPTION 2:
+    If the income-only button is selected, only income items will show in the filtered list.
+    If the expense-only button is selected, only expenese items will show in the filtered list.
+    If both buttons are selected, all items will be listed.
+    If neither button is selected, all items will be listed.*/
+
+    // expenseItems() {
+    //   if ((expenseCheck = true)) {
+    //     return this.items.filter((item) => item.amount < 0);
+    //   }
+    //  },
   },
 };
 </script>
