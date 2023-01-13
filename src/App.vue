@@ -90,7 +90,9 @@ export default {
       return this.income + this.expenses;
     },
     filteredItems() {
-      return this.items.filter((item) => item.name.includes(this.searchTerm));
+      return this.items.filter((item) =>
+        item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
+      );
     },
   },
 };
