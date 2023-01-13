@@ -13,8 +13,13 @@
       <button @click="addItem" class="btn btn-info">Add</button>
     </div>
 
-    <div class="d-flex mt-4">
-      <input type="text" placeholder="search..." v-model="searchTerm" />
+    <div id="search" class="d-flex mt-4">
+      <input
+        type="text"
+        placeholder="search..."
+        class="w-50"
+        v-model="searchTerm"
+      />
     </div>
     <div>
       <ul class="mt-4 list-group">
