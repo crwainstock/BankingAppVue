@@ -10,7 +10,7 @@
     <div class="d-flex mt-4">
       <input type="text" placeholder="add a new item" v-model="name" />
       <input type="number" placeholder="amount" v-model.number="amount" />
-      <button @click="addItem">Add</button>
+      <button @click="addItem" class="btn btn-info">Add</button>
     </div>
 
     <div class="d-flex mt-4">
@@ -93,4 +93,11 @@ export default {
 
 <style scoped>
 /* Style done with Bootstrap: https://getbootstrap.com/docs/5.2/getting-started/introduction/ */
+button {
+  color: #ffff;
+}
+input {
+  padding: 0.5rem;
+  margin-right: 0.2rem;
+}
 </style>
