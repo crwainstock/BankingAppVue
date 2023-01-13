@@ -91,4 +91,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Style done with Bootstrap: https://getbootstrap.com/docs/5.2/getting-started/introduction/ */
+</style>
