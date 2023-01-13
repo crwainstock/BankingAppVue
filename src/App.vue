@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>My Bank App</h1>
+    <h1 class="display-1">My Bank App</h1>
     <div class="row mb-4">
       <Box :amount="income" title="Income" />
       <Box :amount="expenses" title="Expenses" />
