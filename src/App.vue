@@ -116,16 +116,32 @@ export default {
     // For search filter & checkboxes
     filteredItems() {
       let filteredItems = this.items;
-      if (this.incomeCheck) {
-        return this.item.filter((item) => item.amount > 0);
+      if (!this.incomeCheck && !this.expenseCheck) {
+        return this.items;
+      } else if (this.incomeCheck && !this.expenseCheck) {
+        return this.items.filter((item) => item.amount > 0);
+      } else if (!this.incomeCheck && this.expenseCheck) {
+        return this.items.filter((item) => item.amount < 0);
+      } else if (this.incomeCheck && this.expenseCheck) {
+        return this.items;
       } else {
-        return this.items.filter((item) =>
-          item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
+        return this.filteredItems.filter((item) =>
+          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       }
+
+      // let filteredItems = this.items;
+      // if (this.incomeCheck) {
+      //   return this.item.filter((item) => item.amount > 0);
+      // } else {
+      //   return this.items.filter((item) =>
+      //     item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
+      //   );
+      // }
     },
     // FIRST ATTEMPT AT CHECKBOXES INTEGRATION
     // filteredItems() {
+    //     let filteredItems = this.items;
     // if (!incomeCheck && !expenseCheck) {
     //   return this.items;
     // } else if (incomeCheck && !expenseCheck) {
