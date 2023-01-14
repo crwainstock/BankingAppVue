@@ -115,26 +115,38 @@ export default {
     },
     // For search filter & checkboxes
     filteredItems() {
-      if (!incomeCheck && !expenseCheck) {
-        return this.items;
-      } else if (incomeCheck && !expenseCheck) {
-        return this.items.filter((item) => item.amount > 0);
-      } else if (!incomeCheck && expenseCheck) {
-        return this.items.filter((item) => item.amount < 0);
-      } else if (incomeCheck && expenseCheck) {
-        return this.items;
+      let filteredItems = this.items;
+      if (this.incomeCheck) {
+        return this.item.filter((item) => item.amount > 0);
       } else {
-        return this.filteredItems.filter((item) =>
-          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        return this.items.filter((item) =>
+          item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
         );
       }
-      // return this.items.filter((item) =>
-      //   item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
-      // );
     },
+    // FIRST ATTEMPT AT CHECKBOXES INTEGRATION
+    // filteredItems() {
+    // if (!incomeCheck && !expenseCheck) {
+    //   return this.items;
+    // } else if (incomeCheck && !expenseCheck) {
+    //   return this.items.filter((item) => item.amount > 0);
+    // } else if (!incomeCheck && expenseCheck) {
+    //   return this.items.filter((item) => item.amount < 0);
+    // } else if (incomeCheck && expenseCheck) {
+    //   return this.items;
+    // } else {
+    //   return this.filteredItems.filter((item) =>
+    //     item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    //   );
+    // }
+    // ORIGINAL METHOD
+    // return this.items.filter((item) =>
+    //   item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
+    // );
+  },
 
-    // For checkboxes -- This isn't quite working yet...revisit.
-    /*Ok, so realistically, if I was making something with usability in mind, these checkboxes might not be the way to go.
+  // For checkboxes -- This isn't quite working yet...revisit.
+  /*Ok, so realistically, if I was making something with usability in mind, these checkboxes might not be the way to go.
     But, I'm curious how to make them work with the filter. Radio buttons might be a better option for this.
 
     OPTION 1:
@@ -150,12 +162,11 @@ export default {
     If both buttons are selected, all items will be listed.
     If neither button is selected, all items will be listed.*/
 
-    // expenseItems() {
-    //   if ((expenseCheck = true)) {
-    //     return this.items.filter((item) => item.amount < 0);
-    //   }
-    //  },
-  },
+  // expenseItems() {
+  //   if ((expenseCheck = true)) {
+  //     return this.items.filter((item) => item.amount < 0);
+  //   }
+  //  },
 };
 </script>
 
