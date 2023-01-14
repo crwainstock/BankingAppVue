@@ -115,9 +115,22 @@ export default {
     },
     // For search filter
     filteredItems() {
-      return this.items.filter((item) =>
-        item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
-      );
+      if (!incomeCheck && !expenseCheck) {
+        return this.items;
+      } else if (incomeCheck && !expenseCheck) {
+        return this.items.filter((item) => item.amount > 0);
+      } else if (!incomeCheck && expenseCheck) {
+        return this.items.filter((item) => item.amount < 0);
+      } else if (incomeCheck && expenseCheck) {
+        return this.items;
+      } else {
+        return filteredItems.filter((item) =>
+          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      }
+      // return this.items.filter((item) =>
+      //   item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
+      // );
     },
 
     // For checkboxes -- This isn't quite working yet...revisit.
