@@ -113,7 +113,7 @@ export default {
     balance() {
       return this.income + this.expenses;
     },
-    // For search filter
+    // For search filter & checkboxes
     filteredItems() {
       if (!incomeCheck && !expenseCheck) {
         return this.items;
@@ -124,7 +124,7 @@ export default {
       } else if (incomeCheck && expenseCheck) {
         return this.items;
       } else {
-        return filteredItems.filter((item) =>
+        return this.filteredItems.filter((item) =>
           item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       }
