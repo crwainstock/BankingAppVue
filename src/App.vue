@@ -117,17 +117,15 @@ export default {
     filteredItems() {
       let filteredItems = this.items;
       if (!this.incomeCheck && !this.expenseCheck) {
-        return this.items;
+        return this.items.filter((item) =>
+          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
       } else if (this.incomeCheck && !this.expenseCheck) {
         return this.items.filter((item) => item.amount > 0);
       } else if (!this.incomeCheck && this.expenseCheck) {
         return this.items.filter((item) => item.amount < 0);
-      } else if (this.incomeCheck && this.expenseCheck) {
+      } else if (this.incomeCheck && expenseCheck) {
         return this.items;
-      } else {
-        return this.filteredItems.filter((item) =>
-          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
       }
 
       // let filteredItems = this.items;
