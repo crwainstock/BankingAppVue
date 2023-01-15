@@ -121,45 +121,28 @@ export default {
           item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       } else if (this.incomeCheck && !this.expenseCheck) {
-        return this.items.filter((item) => item.amount > 0);
+        return this.items
+          .filter((item) => item.amount > 0)
+          .filter((item) =>
+            item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+          );
       } else if (!this.incomeCheck && this.expenseCheck) {
-        return this.items.filter((item) => item.amount < 0);
-      } else if (this.incomeCheck && expenseCheck) {
-        return this.items;
+        return this.items
+          .filter((item) => item.amount < 0)
+          .filter((item) =>
+            item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+          );
+      } else if (this.incomeCheck && this.expenseCheck) {
+        return this.items.filter((item) =>
+          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
       }
-
-      // let filteredItems = this.items;
-      // if (this.incomeCheck) {
-      //   return this.item.filter((item) => item.amount > 0);
-      // } else {
-      //   return this.items.filter((item) =>
-      //     item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
-      //   );
-      // }
     },
-    // FIRST ATTEMPT AT CHECKBOXES INTEGRATION
-    // filteredItems() {
-    //     let filteredItems = this.items;
-    // if (!incomeCheck && !expenseCheck) {
-    //   return this.items;
-    // } else if (incomeCheck && !expenseCheck) {
-    //   return this.items.filter((item) => item.amount > 0);
-    // } else if (!incomeCheck && expenseCheck) {
-    //   return this.items.filter((item) => item.amount < 0);
-    // } else if (incomeCheck && expenseCheck) {
-    //   return this.items;
-    // } else {
-    //   return this.filteredItems.filter((item) =>
-    //     item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    //   );
-    // }
-    // ORIGINAL METHOD
-    // return this.items.filter((item) =>
-    //   item.name.toLowerCase(this.searchTerm).includes(this.searchTerm)
-    // );
   },
-
-  // For checkboxes -- This isn't quite working yet...revisit.
+  //So, this filter function works for all instances but when both income-only and expense-only boxes are selected.
+  //I think it's just not getting to that part of the code because of the other options above it in the if-statements.
+  //I tried putting it up in the second place, but then the income-only box didn't filter correctly on its own. 😶
+  //
   /*Ok, so realistically, if I was making something with usability in mind, these checkboxes might not be the way to go.
     But, I'm curious how to make them work with the filter. Radio buttons might be a better option for this.
 
